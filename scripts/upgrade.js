@@ -2,7 +2,7 @@ import { execSync } from 'child_process';
 import * as fs from 'fs';
 import path from 'path';
 
-const repoUrl = 'https://github.com/Stuyk/rebar-altv';
+const repoUrl = 'https://github.com/brunorsch/rebar-altv.git';
 
 const tmpPath = path.resolve(process.cwd(), 'tmp');
 
@@ -22,7 +22,7 @@ const foldersToCopy = [
 
 function cloneRepository(repoUrl, clonePath) {
     console.log(`Cloning repository from ${repoUrl} to ${clonePath}...`);
-    execSync(`git clone ${repoUrl} ${clonePath}`, { stdio: 'inherit' });
+    execSync(`git clone --single-branch --branch compatibility ${repoUrl} ${clonePath}`, { stdio: 'inherit' });
 }
 
 function moveDirectory(src, dest, makeDirectory = true) {
